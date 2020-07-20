@@ -1,11 +1,11 @@
 <h1>Events</h1>
 
-<ul>
+<ul class="list-group">
   <% @events.each do |event| %>
-    <li>
+    <li class="list-group-item">
       <%= link_to event.title, event_path(event) %>
     </li>
   <% end %>
 </ul>
 
-<%= link_to "Add new event", new_event_path %>
+<%= button_to "Add new event", new_event_path, method: :get, :class => "btn btn-dark"%>
