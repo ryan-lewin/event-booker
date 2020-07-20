@@ -11,6 +11,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @owners = Owner.all
   end
 
   def create
@@ -29,6 +30,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @owners = Owner.all
   end
 
   def update
