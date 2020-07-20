@@ -2,4 +2,6 @@
 <p><%= @event.description %></p>
 <p><%= @event.date %></p>
 
+<%= link_to "Delete", event_path(@event), method: :delete, data: {confirm: "Delete the event?"} %>
+<%= link_to "Edit", edit_event_path(@event) %>
 <%= link_to "Return to events", events_path %>
