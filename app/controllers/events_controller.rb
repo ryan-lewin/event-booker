@@ -16,6 +16,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.owner_id = session[:user_id]
     @event.save
     flash.notice = "Event has been created"
     redirect_to event_path(@event)

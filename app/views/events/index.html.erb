@@ -8,4 +8,6 @@
   <% end %>
 </ul>
 
-<%= button_to "Add new event", new_event_path, method: :get, :class => "btn btn-dark"%>
+<% if user_is_owner %>
+  <%= button_to "Add new event", new_event_path, method: :get, :class => "btn btn-dark"%>
+<% end %>
