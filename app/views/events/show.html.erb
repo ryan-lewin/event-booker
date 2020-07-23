@@ -6,7 +6,7 @@
 <% if @is_owner %>
 	<%= link_to "Delete", event_path(@event), method: :delete, data: {confirm: "Delete the event?"}, :class => "btn btn-dark" %>
 	<%= link_to "Edit", edit_event_path(@event), :class => "btn btn-dark" %>
-<% else %>
+<% elsif current_user != nil %>
 	<%= link_to "Join Event", event_user_path, method: :post, :class => "btn btn-dark"%>
 <% end %>
 
