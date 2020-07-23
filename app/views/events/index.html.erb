@@ -1,13 +1,35 @@
-<h1>Events</h1>
-
-<ul class="list-group">
-  <% @events.each do |event| %>
-    <li class="list-group-item">
-      <%= link_to event.title, event_path(event) %>
-    </li>
+<% if not user_is_owner %>
+  <h2>Events</h2>
+  <ul class="list-group">
+    <% @events.each do |event| %>
+      <li class="list-group-item">
+        <%= link_to event.title, event_path(event) %>
+      </li>
+    <% end %>
+  </ul>
+  <% if current_user != nil %>
+    <h2>Events I'm attending</h2>
+    <ul class="list-group">
+      <% @attending_events.each do |event| %>
+        <li class="list-group-item">
+          <p><strong>Volunteer:</strong> <%= event.user_name%></p>
+          <p><strong>Event:</strong> <%= event.event_title%></p>
+          <% if event.approved == false %>
+          <p><strong>Approval Pending</strong></p>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   <% end %>
-</ul>
-
-<% if user_is_owner %>
+<% else %>
+  <h2>My Events</h2>
+  <ul class="list-group">
+    <% @my_events.each do |event| %>
+      <li class="list-group-item">
+        <%= link_to event.title, event_path(event) %>
+      </li>
+    <% end %>
+  </ul>
   <%= button_to "Add new event", new_event_path, method: :get, :class => "btn btn-dark"%>
+  <%= button_to "Pending Volunteers", event_users_path, method: :get, :class => "btn btn-dark"%>
 <% end %>

@@ -1,0 +1,23 @@
+<h2>Pending Volunteers</h2>
+	<ul class="list-group">
+	<% @pending.each do |pending| %>
+			<li class="list-group-item">
+			<p><strong>Volunteer:</strong> <%= pending.user_name%></p>
+			<p><strong>Event:</strong> <%= pending.event_title%></p>
+			<%= link_to "Approve", event_user_path(pending), method: :put, :class => "btn btn-dark" %>
+			</li>
+	<% end %>
+	</ul>
+
+	<h2>Approved Volunteers</h2>
+	<ul class="list-group">
+	<% @approved.each do |approved| %>
+			<li class="list-group-item">
+			<p><strong>Volunteer:</strong> <%= approved.user_name%></p>
+			<p><strong>Event:</strong> <%= approved.event_title%></p>
+			<!-- <%= link_to "Disapprove", event_user_path(approved), method: :put, :class => "btn btn-dark" %> -->
+			</li>
+	<% end %>
+	</ul>
+
+	<%= link_to "Return to events", events_path, :class => "btn btn-dark" %>

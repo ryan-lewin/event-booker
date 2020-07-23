@@ -2,11 +2,19 @@ class EventsController < ApplicationController
   include EventsHelper
 
   def index
+    if current_user != nil and current_user.admin
+      @my_events = Event.where(:user_id => current_user.id)
+    elsif current_user != nil
+      @attending_events = EventUser.where(:user_id => current_user.id)
+    end
     @events = Event.all
   end
 
   def show
     @event = Event.find(params[:id])
+    if @event.user == current_user
+      @is_owner = true
+    end
   end
 
   def new
