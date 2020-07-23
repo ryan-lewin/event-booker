@@ -1,7 +1,7 @@
 <h1><%= @event.title%></h1>
 <p><strong>Description:</strong> <%= @event.description %></p>
 <p><strong>Date:</strong> <%= @event.date %></p>
-<p><strong>Owner:</strong> <%= @event.owner.name %></p>
+<p><strong>Owner:</strong> <%= @event.user.f_name %> <%= @event.user.l_name %></p>
 
 <%= link_to "Delete", event_path(@event), method: :delete, data: {confirm: "Delete the event?"}, :class => "btn btn-dark" %>
 <%= link_to "Edit", edit_event_path(@event), :class => "btn btn-dark" %>
